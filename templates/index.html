@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎥 YouTube Video Chatbot</h1>
+            <p>Ask questions about any YouTube video!</p>
+        </div>
+
+        <div class="video-input-section" id="videoInputSection">
+            <div class="input-group">
+                <input
+                    type="text"
+                    id="videoUrlInput"
+                    placeholder="Enter YouTube video URL (e.g., https://youtu.be/...)"
+                    class="url-input"
+                >
+                <button id="processBtn" class="process-btn">Process Video</button>
+            </div>
+            <p class="transcript-help">
+                If automatic transcript loading fails (for example, because YouTube blocks cloud servers),
+                you can paste the video transcript below and process it safely without calling YouTube directly.
+            </p>
+            <textarea
+                id="transcriptInput"
+                class="transcript-input"
+                placeholder="Optional: Paste the full transcript text here to skip automatic transcript download."
+            ></textarea>
+            <button id="processTranscriptBtn" class="secondary-btn">Use Pasted Transcript</button>
+            <div id="videoStatus" class="status-message"></div>
+        </div>
+
+        <div class="chat-container" id="chatContainer" style="display: none;">
+            <div class="chat-header">
+                <h2>Chat with Video</h2>
+                <button id="newVideoBtn" class="new-video-btn">New Video</button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be added here -->
+            </div>
+
+            <div class="chat-input-container">
+                <div class="input-wrapper">
+                    <input
+                        type="text"
+                        id="questionInput"
+                        placeholder="Ask a question about the video..."
+                        class="question-input"
+                    >
+                    <button id="sendBtn" class="send-btn">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
